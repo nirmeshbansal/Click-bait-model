@@ -1,8 +1,7 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 import _pickle as pickle
 from sklearn import metrics
-#import model_selection
-#import dataset_builder
+import pandas as pd
 from sklearn import svm
 from nltk.stem.wordnet import WordNetLemmatizer
 import nltk
@@ -18,3 +17,7 @@ def tokenize(text):
         except ValueError:
             l.append(lmtzr.lemmatize(t))
     return 1
+
+fields = ['titles','clickbait']
+data = pd.read_csv("Data/clickBait_Data.csv", skipinitialspace=True, usecols=fields)
+print(data.head(5))
